@@ -56,8 +56,6 @@ class API {
 
     public function update( $videoResponse = null ) {
 
-        echo print_r( $videoResponse );
-
         foreach ( $videoResponse['items'] as $video ) {
 
             $video_duration = new \DateInterval( $video['contentDetails']['duration'] );
