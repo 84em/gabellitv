@@ -95,19 +95,19 @@ class API {
                 }
             }
 
-            else {
-
-                wp_update_post( [
-                    'ID'           => $existing_video_post_id,
-                    'post_title'   => $video['snippet']['title'],
-                    'post_content' => $video['snippet']['description'],
-                    'post_date'    => date( 'Y-m-d H:i:s', strtotime( $video['snippet']['publishedAt'] ) ),
-                ] );
-
-                update_field( 'thumbnail', $video['snippet']['thumbnails']['medium']['url'], $existing_video_post_id );
-                update_field( 'image', $video['snippet']['thumbnails']['maxres']['url'], $existing_video_post_id );
-                update_field( 'duration', $duration, $existing_video_post_id );
-            }
+//            else {
+//
+//                wp_update_post( [
+//                    'ID'           => $existing_video_post_id,
+//                    'post_title'   => $video['snippet']['title'],
+//                    'post_content' => $video['snippet']['description'],
+//                    'post_date'    => date( 'Y-m-d H:i:s', strtotime( $video['snippet']['publishedAt'] ) ),
+//                ] );
+//
+//                update_field( 'thumbnail', $video['snippet']['thumbnails']['medium']['url'], $existing_video_post_id );
+//                update_field( 'image', $video['snippet']['thumbnails']['maxres']['url'], $existing_video_post_id );
+//                update_field( 'duration', $duration, $existing_video_post_id );
+//            }
         }
 
         DB::log_success( sprintf( 'Updated %s videos.  Next Page Token: %s', count( $videoResponse['items'] ), $this->next_page_token ) );
