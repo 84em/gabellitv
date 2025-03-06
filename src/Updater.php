@@ -19,12 +19,7 @@ class Updater {
     public function poller() {
 
         $api = new API();
-        $api->update();
+        $api->poll();
     }
-
-    public function updater() {
-
-    }
-
 }
 
