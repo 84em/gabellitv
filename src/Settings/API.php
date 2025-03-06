@@ -169,7 +169,7 @@ class API {
             'section'     => 0,
             'description' => __( 'How often (in minutes) to poll YouTube for new videos?', 'gabelli' ),
             'sanitize'    => 'absint',
-            'atts'        => [ 'min' => 1, 'max' => 59 ],
+            'atts'        => [ 'min' => 5 ],
         ];
 
         foreach ( $this->fields as $field ) {
