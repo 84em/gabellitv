@@ -10,7 +10,7 @@ add_action( 'updated_option', function ( $option, $old_value, $value ) {
     if ( $option === 'gabellitv-api' ) {
 
         if ( 'no' === $value['disabled'] ) {
-            as_schedule_recurring_action( time(), HOUR_IN_SECONDS, 'gabellitv_poller' );
+            as_schedule_recurring_action( time(), DAY_IN_SECONDS, 'gabellitv_poller' );
         }
         else {
             as_unschedule_all_actions( 'gabellitv_poller' );
