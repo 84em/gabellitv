@@ -1,0 +1,18 @@
+{
+    "name": "vested/gabellitv",
+    "type": "wordpress-plugin",
+    "require": {
+        "google/apiclient": "^2.18"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vested\\GabelliTV\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrew Miller",
+            "email": "andrew@84em.com"
+        }
+    ]
+}
