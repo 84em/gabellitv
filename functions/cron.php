@@ -18,7 +18,7 @@ function maybe_schedule_tasks() {
 
     // poller
     if ( ! as_has_scheduled_action( 'gabellitv_poller' ) ) {
-        as_schedule_recurring_action( time(), ( MINUTE_IN_SECONDS * 10 ), 'gabellitv_poller' );
+        as_schedule_recurring_action( time(), HOUR_IN_SECONDS, 'gabellitv_poller' );
     }
 }
 

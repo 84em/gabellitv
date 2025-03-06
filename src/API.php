@@ -56,6 +56,8 @@ class API {
 
     public function update( $videoResponse = null ) {
 
+        echo print_r($videoResponse);
+
         foreach ( $videoResponse['items'] as $video ) {
 
             $video_duration = new \DateInterval( $video['contentDetails']['duration'] );
@@ -108,20 +110,19 @@ class API {
             }
         }
 
-        $this->next_page_token = $videoResponse->getNextPageToken();
         DB::log_success( sprintf( 'Updated %s videos.  Next Page Token: %s', count( $videoResponse['items'] ), $this->next_page_token ) );
     }
 
     public function poll() {
 
-        $videoResponse = $this->fetch_response( 50 );
+        $videoResponse = $this->fetch_response( 10 );
         $this->update( $videoResponse );
     }
 
     public function backfill() {
 
         do {
-            $videoResponse = $this->fetch_response( 50, $this->next_page_token );
+            $videoResponse = $this->fetch_response( 50 );
             $this->update( $videoResponse );
         } while ( ! empty( $this->next_page_token ) );
     }
@@ -135,6 +136,8 @@ class API {
             'type'       => 'video',
             'pageToken'  => $this->next_page_token,
         ] );
+
+        $this->next_page_token = $response->getNextPageToken();
 
         $videoIds = array_map( function ( $item ) {
 

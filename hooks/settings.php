@@ -9,18 +9,11 @@ add_action( 'updated_option', function ( $option, $old_value, $value ) {
 
     if ( $option === 'gabellitv-api' ) {
 
-        as_unschedule_all_actions( 'gabellitv_poller' );
-
         if ( 'no' === $value['disabled'] ) {
-
-            $specified_interval = absint( $value['poller'] );
-            if ( $specified_interval < 5 ) {
-                $specified_interval = 1;
-            }
-
-            $interval = MINUTE_IN_SECONDS * $specified_interval;
-
-            as_schedule_recurring_action( time(), $interval, 'gabellitv_poller' );
+            as_schedule_recurring_action( time(), HOUR_IN_SECONDS, 'gabellitv_poller' );
+        }
+        else {
+            as_unschedule_all_actions( 'gabellitv_poller' );
         }
     }
 

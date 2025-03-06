@@ -162,16 +162,6 @@ class API {
             'values'      => [ 'no' => 'No', 'yes' => 'Yes' ],
         ];
 
-        $this->fields[] = [
-            'id'          => 'poller',
-            'title'       => __( 'Frequency', 'gabelli' ),
-            'type'        => 'number',
-            'section'     => 0,
-            'description' => __( 'How often (in minutes) to poll YouTube for new videos?', 'gabelli' ),
-            'sanitize'    => 'absint',
-            'atts'        => [ 'min' => 5 ],
-        ];
-
         foreach ( $this->fields as $field ) {
             add_settings_field(
                 $field['id'],
