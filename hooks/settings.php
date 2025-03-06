@@ -14,12 +14,10 @@ add_action( 'updated_option', function ( $option, $old_value, $value ) {
         if ( 'no' === $value['disabled'] ) {
 
             $specified_interval = absint( $value['poller'] );
-            if ( $specified_interval < 1 ) {
+            if ( $specified_interval < 5 ) {
                 $specified_interval = 1;
             }
-            elseif ( $specified_interval > 59 ) {
-                $specified_interval = 59;
-            }
+
             $interval = MINUTE_IN_SECONDS * $specified_interval;
 
             as_schedule_recurring_action( time(), $interval, 'gabellitv_poller' );
