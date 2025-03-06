@@ -10,6 +10,6 @@ add_action(
 );
 
 add_action(
-	'gabellitv_poller',
-	[ Updater::get_instance(), 'poller' ]
+    'gabellitv_poller',
+    [ Updater::get_instance(), 'poller' ]
 );

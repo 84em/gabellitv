@@ -15,12 +15,14 @@ class CLI {
         $api->update();
     }
 
-    public function backfill($args,$assoc_args){
+    public function backfill( $args, $assoc_args ) {
+
         $api = new API();
         $api->backfill();
     }
 
     public function schema( $args, $assoc_args ) {
+
         DB::schema();
     }
 }
